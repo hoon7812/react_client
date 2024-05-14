@@ -12,8 +12,10 @@ function App(){
         <h4>블로그임</h4>
       </div>
 
-      <div className={ tlSmall }>{ post }</div>
-
+      <div className={ tlSmall }>
+        { post }        
+        <p style={ {color : 'blue', fontSize : '12px'} }>인라인 스타일</p>
+      </div>
 
       <footer>
         footer
