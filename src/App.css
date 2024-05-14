@@ -1,0 +1,12 @@
+.black-nav {
+  background : black;
+  width : 100%;
+  display : flex;
+  color : white;
+  padding : 20px;
+}
+
+.tl_s {
+  padding: 20px;
+  color: #000;
+}
