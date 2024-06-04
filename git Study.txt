@@ -19,7 +19,7 @@ mkdir 폴더명 : 디렉토리 만들기
 
 --- vi editor 
 
-esc > :wq  저장하고 나가기
+esc > :wq!  저장하고 나가기
 
 
 git status : 상태보기 
