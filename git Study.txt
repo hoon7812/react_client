@@ -1,0 +1,44 @@
+
+
+============Git 스터디=============
+
+
+
+--- git bash : 리눅스 기반 커맨드
+
+
+pwd : 나의 현재 위치
+
+ls, dir : 파일 및 폴더목록보기 ( ls -a 숨김파일까지)
+
+mkdir 폴더명 : 디렉토리 만들기
+
+
+
+
+
+--- vi editor 
+
+esc > :wq  저장하고 나가기
+
+
+git status : 상태보기 
+git branch -v : 로컬브랜치 확인
+git remote udpate
+git rebase master > i > reword > : wq
+git rebase --edit-todo
+git rebase --continue
+git rebase --abort
+git branch -D 브랜치명
+git checkout -b 브랜치명 origin/브랜치명
+
+
+
+커밋 메시지 수정시 : rebase
+
+git rebase --interactive '28b1a5a1ee6^' : 커밋넘버
+
+
+
+
+
