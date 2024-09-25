@@ -3,19 +3,19 @@ import { UncontrolledCarousel } from 'reactstrap';
 
 const items = [
   {
-    src: 'https://han.gl/q6jDb',
+    src: 'http://asq.kr/QUnjzAodA',
     altText: '슬라이드1 이미지 대체 문구',
     caption: '슬라이드1 설명',
     header: '슬라이드1 제목'
   },
   {
-    src: 'https://han.gl/d4jbj',
+    src: 'http://asq.kr/n3vBOWt9g',
     altText: '슬라이드2 이미지 대체 문구',
     caption: '슬라이드2 설명',
     header: '슬라이드2 제목'
   },
   {
-    src: 'https://han.gl/U7FFH',
+    src: 'http://asq.kr/uzWLMeIJh',
     altText: '슬라이드3 이미지 대체 문구',
     caption: '슬라이드3 설명',
     header: '슬라이드3 제목'
