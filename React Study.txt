@@ -1,8 +1,10 @@
 
 
-============리액트 스터디============='
+============리액트 스터디=============
 
 
+
+------설치 셋팅-------
 
 
 
@@ -19,79 +21,6 @@ JSX문법
 - style={ {color : 'blue', fontSize : '30px'} } 
 font-size 처럼 속성명에 - 대쉬기호를 쓸 수 없습니다.
 대쉬기호 대신 모든 단어를 붙여써야합니다. 붙여쓸 땐 앞글자를 대문자로 치환해야합니다. 
-
-
-
-
-=======================================
-
- <React.StrictMode> 
-React에서 제공하는 도구로, 애플리케이션에서 잠재적인 문제를 감지하고 경고해주는 역할을 합니다. 화면에 아무것도 렌더링하지 않지만, 하위 컴포넌트들에 대해 추가적인 검사와 경고를 활성화하여, 안전하지 않은 라이프사이클 메서드나 폐기 예정인 API 등을 식별하는 데 도움을 줍니다. 
-
->> 일반적으로 삭제
-
-
-
-=== package.json ===
-
-package.json 파일은 Node.js 및 React 프로젝트에서 중요한 설정 파일로, 프로젝트의 메타데이터와 의존성(패키지)을 관리합니다. 프로젝트의 이름, 버전, 스크립트, 그리고 프로젝트가 사용하는 라이브러리(패키지)의 정보가 포함되어 있습니다.
-
-주요 항목:
-name: 프로젝트의 이름.
-version: 프로젝트 버전.
-dependencies: 애플리케이션이 실행되기 위해 필요한 패키지들. 버전 번호와 함께 명시됩니다.
-
-
-scripts: 자주 사용하는 명령어를 정의. 예를 들어, npm start, npm run build와 같은 명령어들이 여기에 정의됩니다.
-json
-코드 복사
-"scripts": {
-  "start": "react-scripts start",
-  "build": "react-scripts build"
-}
-
-
-**package.json**은 프로젝트의 의존성과 메타데이터를 관리하는 파일.
-**package-lock.json**은 의존성 트리의 정확한 버전 정보를 잠그고, 동일한 환경에서 패키지가 설치되도록 보장.
-
-
-
-서비스 워커(Service Worker)란?
-서비스 워커는 웹 애플리케이션에 오프라인 기능을 추가하거나 백그라운드 작업을 처리할 수 있게 하는 웹 기술입니다. 예를 들어, 캐시를 사용해 네트워크 연결이 없을 때도 웹 페이지를 제공하거나, 푸시 알림을 관리할 수 있습니다. 서비스 워커는 브라우저의 백그라운드에서 동작하며, 웹 페이지와 독립적으로 작동합니다.
-
-
-manifest.json 파일은 웹 애플리케이션을 **Progressive Web App (PWA)**로 만들기 위한 핵심 구성 요소 중 하나입니다. 이 파일은 브라우저와 장치가 웹 애플리케이션을 어떻게 처리할지에 대한 메타데이터를 제공하는 구성 파일입니다. 주로 PWA에서 웹 애플리케이션을 네이티브 앱처럼 설치하거나 홈 화면에 추가할 때 사용됩니다.
-
-
-
-=== 리액트 구조의 이해 ===
-public 폴더 > html, ico, 이미지, mainfest.json
- - index.html  >> ID
- 
-src 폴더 > index.js 1. react import
-                       2. react-dom import
-                       3. App import : 태그로 사용 >>> render App
-                       4. serviceWorker import
-                       5. index.css import
-
-          > App.js 1. react import
-                     2. App.css import
-                     3. 각 필요한 컴포넌트 import
-                     4. fuction App 함수작성, 태그 적용, component 태그
-                     5. export App
-
-                     
-
-=== 생명주기란? ===
-react에서 생명주기란 component의 생성, 변경, 소멸 과정을 뜻함.
-
-상태 관리: 클래스 컴포넌트를 사용할 때는 상태(state)를 관리하기 위해 this.state를 사용하고, 상태를 변경할 때는 this.setState() 메서드를 사용합니다.
-생명주기 메서드: 클래스 컴포넌트는 여러 생명주기 메서드를 사용할 수 있어 컴포넌트의 생성, 업데이트, 제거 시점을 제어할 수 있습니다.
-
-
-
-
-
 
 
 
@@ -291,4 +220,246 @@ function App() {
 }
 
 export default App;
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+1. 메서드 (Method)
+정의: 메서드는 객체에 속한 함수입니다. 객체의 행동을 정의하며, 해당 객체의 속성에 접근할 수 있습니다.
+
+const dog = {
+  name: 'Buddy',
+  bark: function() { // 메서드
+    console.log(`${this.name} says woof!`);
+  }
+};
+
+dog.bark(); // 결과: Buddy says woof!
+이 예시에서 bark는 dog 객체의 메서드로, this를 통해 객체의 속성 name에 접근합니다.
+
+
+2. 인자 (Argument)
+정의: 함수를 호출할 때 전달하는 값을 인자라고 합니다. 함수의 입력으로 사용됩니다.
+
+function add(x, y) { // x와 y는 파라미터
+  return x + y;
+}
+
+const result = add(5, 3); // 5와 3은 인자
+console.log(result); // 결과: 8
+이 예시에서 5와 3은 add 함수에 전달된 인자입니다.
+
+
+3. 인수 (Parameter)
+정의: 함수 정의에서 사용되는 변수로, 함수가 호출될 때 인자가 할당되는 부분입니다. 함수의 입력을 정의합니다.
+
+function multiply(a, b) { // a와 b는 인수
+  return a * b;
+}
+
+const product = multiply(4, 5); // 4와 5는 인자
+console.log(product); // 결과: 20
+여기서 a와 b는 multiply 함수의 인수입니다.
+
+
+4. 인스턴스 (Instance)
+정의: 클래스에서 생성된 구체적인 객체를 의미합니다. 인스턴스는 클래스의 속성과 메서드를 가질 수 있습니다.
+
+class Car {
+  constructor(brand, model) {
+    this.brand = brand; // 속성
+    this.model = model; // 속성
+  }
+
+  drive() { // 메서드
+    console.log(`Driving a ${this.brand} ${this.model}`);
+  }
+}
+
+// 인스턴스 생성
+const myCar = new Car('Toyota', 'Corolla'); // myCar는 Car 클래스의 인스턴스
+
+myCar.drive(); // 결과: Driving a Toyota Corolla
+이 예시에서 myCar는 Car 클래스의 인스턴스입니다.
+
+요약
+메서드: 객체에 속한 함수.
+인자: 함수를 호출할 때 전달하는 값.
+인수: 함수 정의에서 사용되는 변수.
+인스턴스: 클래스에서 생성된 실제 객체.
+이 네 가지 개념은 JavaScript의 객체 지향 프로그래밍에서 중요한 역할을 하며, 함께 이해하면 프로그래밍을 보다 쉽게 할 수 있습니다.
+
+
+
+
+
+
+--- 메서드 (행동) ---
+
+1. 정적 메서드 (Static Method)
+정의: 정적 메서드는 클래스에 속하며, 클래스의 인스턴스 없이 호출할 수 있는 메서드입니다. 보통 static 키워드를 사용하여 정의합니다.
+특징: 클래스 레벨에서 호출되며, 객체의 상태(인스턴스 변수)에 접근할 수 없습니다.
+주로 유틸리티 함수나 클래스의 관련 작업을 수행하는 데 사용됩니다.
+
+class MathUtil {
+  static add(x, y) {
+    return x + y;
+  }
+}
+
+// 정적 메서드 호출
+const result = MathUtil.add(5, 3); // 결과: 8
+
+
+2. 동적 메서드 (Instance Method)
+정의: 동적 메서드는 클래스의 인스턴스에 속하며, 인스턴스를 생성한 후에 호출할 수 있는 메서드입니다.
+특징: 인스턴스 레벨에서 호출되며, 인스턴스의 상태(인스턴스 변수)에 접근할 수 있습니다.
+객체의 상태를 변경하거나, 객체에 관련된 작업을 수행하는 데 주로 사용됩니다.
+
+class Calculator {
+  add(x, y) {
+    return x + y;
+  }
+}
+
+// 인스턴스 생성
+const calculator = new Calculator();
+// 동적 메서드 호출
+const result = calculator.add(5, 3); // 결과: 8
+
+요약
+정적 메서드는 클래스에 속하고, 인스턴스 없이 호출할 수 있으며, 객체의 상태에 접근할 수 없습니다.
+동적 메서드는 인스턴스에 속하고, 인스턴스를 생성한 후에 호출할 수 있으며, 객체의 상태에 접근할 수 있습니다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===========스터디 메모============================
+
+ <React.StrictMode> 
+React에서 제공하는 도구로, 애플리케이션에서 잠재적인 문제를 감지하고 경고해주는 역할을 합니다. 화면에 아무것도 렌더링하지 않지만, 하위 컴포넌트들에 대해 추가적인 검사와 경고를 활성화하여, 안전하지 않은 라이프사이클 메서드나 폐기 예정인 API 등을 식별하는 데 도움을 줍니다. 
+
+>> 일반적으로 삭제
+
+
+
+--- package.json ---
+
+package.json 파일은 Node.js 및 React 프로젝트에서 중요한 설정 파일로, 프로젝트의 메타데이터와 의존성(패키지)을 관리합니다. 프로젝트의 이름, 버전, 스크립트, 그리고 프로젝트가 사용하는 라이브러리(패키지)의 정보가 포함되어 있습니다.
+
+주요 항목:
+name: 프로젝트의 이름.
+version: 프로젝트 버전.
+dependencies: 애플리케이션이 실행되기 위해 필요한 패키지들. 버전 번호와 함께 명시됩니다.
+
+
+scripts: 자주 사용하는 명령어를 정의. 예를 들어, npm start, npm run build와 같은 명령어들이 여기에 정의됩니다.
+json
+코드 복사
+"scripts": {
+  "start": "react-scripts start",
+  "build": "react-scripts build"
+}
+
+
+**package.json**은 프로젝트의 의존성과 메타데이터를 관리하는 파일.
+**package-lock.json**은 의존성 트리의 정확한 버전 정보를 잠그고, 동일한 환경에서 패키지가 설치되도록 보장.
+
+
+
+---서비스 워커(Service Worker)란?---
+서비스 워커는 웹 애플리케이션에 오프라인 기능을 추가하거나 백그라운드 작업을 처리할 수 있게 하는 웹 기술입니다. 예를 들어, 캐시를 사용해 네트워크 연결이 없을 때도 웹 페이지를 제공하거나, 푸시 알림을 관리할 수 있습니다. 서비스 워커는 브라우저의 백그라운드에서 동작하며, 웹 페이지와 독립적으로 작동합니다.
+
+
+manifest.json 파일은 웹 애플리케이션을 **Progressive Web App (PWA)**로 만들기 위한 핵심 구성 요소 중 하나입니다. 이 파일은 브라우저와 장치가 웹 애플리케이션을 어떻게 처리할지에 대한 메타데이터를 제공하는 구성 파일입니다. 주로 PWA에서 웹 애플리케이션을 네이티브 앱처럼 설치하거나 홈 화면에 추가할 때 사용됩니다.
+
+
+
+--- 리액트 구조의 이해 ---
+
+public 폴더 > html, ico, 이미지, mainfest.json
+ - index.html  >> ID
+ 
+src 폴더 > index.js 1. react import
+                       2. react-dom import
+                       3. App import : 태그로 사용 >>> render App
+                       4. serviceWorker import
+                       5. index.css import
+
+          > App.js 1. react import
+                     2. App.css import
+                     3. 각 필요한 컴포넌트 import
+                     4. fuction App 함수작성, 태그 적용, component 태그
+                     5. export App
+
+                     
+
+
+
+--- 생명주기란? (LifeCycle) ---
+
+react에서 생명주기란 component의 생성, 변경, 소멸 과정을 뜻함.
+
+상태 관리: 클래스 컴포넌트를 사용할 때는 상태(state)를 관리하기 위해 this.state를 사용하고, 상태를 변경할 때는 this.setState() 메서드를 사용합니다.
+생명주기 메서드: 클래스 컴포넌트는 여러 생명주기 메서드를 사용할 수 있어 컴포넌트의 생성, 업데이트, 제거 시점을 제어할 수 있습니다.
+
+
+
+
+
+---생성자(constructor)---
+
+constructor(props) {
+  super(props);
+  this.state = {};
+  console.log("1. constructor Call");
+}
+
+
+constructor(props):
+클래스의 생성자입니다. React에서 컴포넌트를 생성할 때, 이 생성자가 가장 먼저 호출됩니다.
+props를 인수로 받아, 부모 클래스인 Component의 생성자를 호출하기 위해 super(props)를 호출합니다. 이를 통해 컴포넌트의 props를 사용할 수 있습니다.
+
+this.state = {};
+컴포넌트의 초기 상태를 설정하는 부분입니다. 현재는 빈 객체로 설정되어 있습니다. 상태를 정의하고 관리할 준비가 되어 있습니다.
+
+
+>> 생명주기 흐름
+생성자 호출:
+컴포넌트가 생성될 때 생성자가 호출됩니다. 이때 상태를 초기화하고, 필요한 props를 부모 클래스에 전달합니다.
+
+렌더 메서드 호출:
+생성자가 호출된 후, 렌더 메서드가 호출됩니다. 이때 컴포넌트의 UI가 결정됩니다.
+
+
+
+추가적으로 컴포넌트의 생명주기 메서드(예: componentDidMount, componentDidUpdate, componentWillUnmount)를 구현하여 더욱 다양한 생명주기 이벤트를 다룰 수 있습니다.
+
+
+
+
 
