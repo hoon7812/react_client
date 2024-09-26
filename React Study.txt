@@ -25,3 +25,270 @@ font-size 처럼 속성명에 - 대쉬기호를 쓸 수 없습니다.
 
 =======================================
 
+ <React.StrictMode> 
+React에서 제공하는 도구로, 애플리케이션에서 잠재적인 문제를 감지하고 경고해주는 역할을 합니다. 화면에 아무것도 렌더링하지 않지만, 하위 컴포넌트들에 대해 추가적인 검사와 경고를 활성화하여, 안전하지 않은 라이프사이클 메서드나 폐기 예정인 API 등을 식별하는 데 도움을 줍니다. 
+
+>> 일반적으로 삭제
+
+
+
+=== package.json ===
+
+package.json 파일은 Node.js 및 React 프로젝트에서 중요한 설정 파일로, 프로젝트의 메타데이터와 의존성(패키지)을 관리합니다. 프로젝트의 이름, 버전, 스크립트, 그리고 프로젝트가 사용하는 라이브러리(패키지)의 정보가 포함되어 있습니다.
+
+주요 항목:
+name: 프로젝트의 이름.
+version: 프로젝트 버전.
+dependencies: 애플리케이션이 실행되기 위해 필요한 패키지들. 버전 번호와 함께 명시됩니다.
+
+
+scripts: 자주 사용하는 명령어를 정의. 예를 들어, npm start, npm run build와 같은 명령어들이 여기에 정의됩니다.
+json
+코드 복사
+"scripts": {
+  "start": "react-scripts start",
+  "build": "react-scripts build"
+}
+
+
+**package.json**은 프로젝트의 의존성과 메타데이터를 관리하는 파일.
+**package-lock.json**은 의존성 트리의 정확한 버전 정보를 잠그고, 동일한 환경에서 패키지가 설치되도록 보장.
+
+
+
+서비스 워커(Service Worker)란?
+서비스 워커는 웹 애플리케이션에 오프라인 기능을 추가하거나 백그라운드 작업을 처리할 수 있게 하는 웹 기술입니다. 예를 들어, 캐시를 사용해 네트워크 연결이 없을 때도 웹 페이지를 제공하거나, 푸시 알림을 관리할 수 있습니다. 서비스 워커는 브라우저의 백그라운드에서 동작하며, 웹 페이지와 독립적으로 작동합니다.
+
+
+manifest.json 파일은 웹 애플리케이션을 **Progressive Web App (PWA)**로 만들기 위한 핵심 구성 요소 중 하나입니다. 이 파일은 브라우저와 장치가 웹 애플리케이션을 어떻게 처리할지에 대한 메타데이터를 제공하는 구성 파일입니다. 주로 PWA에서 웹 애플리케이션을 네이티브 앱처럼 설치하거나 홈 화면에 추가할 때 사용됩니다.
+
+
+
+=== 리액트 구조의 이해 ===
+public 폴더 > html, ico, 이미지, mainfest.json
+ - index.html  >> ID
+ 
+src 폴더 > index.js 1. react import
+                       2. react-dom import
+                       3. App import : 태그로 사용 >>> render App
+                       4. serviceWorker import
+                       5. index.css import
+
+          > App.js 1. react import
+                     2. App.css import
+                     3. 각 필요한 컴포넌트 import
+                     4. fuction App 함수작성, 태그 적용, component 태그
+                     5. export App
+
+                     
+
+=== 생명주기란? ===
+react에서 생명주기란 component의 생성, 변경, 소멸 과정을 뜻함.
+
+상태 관리: 클래스 컴포넌트를 사용할 때는 상태(state)를 관리하기 위해 this.state를 사용하고, 상태를 변경할 때는 this.setState() 메서드를 사용합니다.
+생명주기 메서드: 클래스 컴포넌트는 여러 생명주기 메서드를 사용할 수 있어 컴포넌트의 생성, 업데이트, 제거 시점을 제어할 수 있습니다.
+
+
+
+
+
+
+
+
+
+
+-------------리액트 기본 학습 방법----------------
+
+1. JavaScript 기초
+React는 JavaScript 라이브러리이므로, ES6 문법을 먼저 확실하게 이해하는 것이 중요해요. 특히 const, let, 화살표 함수, map, filter, reduce, async/await 등의 개념에 익숙해지는 게 도움이 됩니다.
+
+2. React 개념 이해
+Component: React는 컴포넌트 기반이에요. 컴포넌트를 만들어서 재사용하고, 각 컴포넌트는 독립적이고 재사용 가능한 코드 덩어리예요.
+JSX: React에서 HTML과 유사하게 코드를 작성하는 방식입니다. JSX가 어떻게 JavaScript로 변환되는지 이해해야 해요.
+
+	Props: 컴포넌트 간에 데이터를 전달할 때 사용하는 것이 props입니다.
+	State: 컴포넌트의 상태를 관리하는 개념입니다. 동적인 UI를 만들 때 사용해요.
+
+3. React 기초
+Functional Components vs Class Components: React 16.8 이후로는 함수형 컴포넌트가 주로 사용되고 있어요. 클래스 컴포넌트는 이제 많이 쓰이지 않지만, 이해해 두면 도움이 될 수 있어요.
+
+	Hooks: 함수형 컴포넌트에서 상태를 관리하고, 라이프사이클 메서드를 대체하는 역할을 하는 useState, useEffect 같은 훅을 알아야 해요.
+	Event Handling: React에서 이벤트를 처리하는 방법을 학습해요. 기본적인 클릭, 입력 처리와 같은 이벤트를 다루는 방식을 이해합니다.
+
+4. React 실습
+간단한 프로젝트: 간단한 TODO 리스트나 카운터 앱을 만들어보세요. React의 주요 개념들을 실습하면서 감을 잡는 데 도움이 돼요.
+Component 구조화: 컴포넌트를 나누고, props를 사용해 데이터를 전달하고 상태를 관리하는 연습을 해보세요.
+
+5. 고급 React
+
+	React Router: 페이지 간 이동을 구현할 때 사용하는 라이브러리입니다.
+	Context API: 전역 상태 관리를 위해 사용하는 기능입니다. 리덕스나 MobX 같은 상태 관리 라이브러리를 사용하기 전에 기본적인 전역 상태 관리를 배우는 데 유용해요.
+	React의 최적화: 리렌더링을 방지하는 React.memo, useCallback, useMemo 등 성능 최적화에 관련된 기술을 학습해 보세요.
+
+6. 프로젝트 기반 학습
+
+	API 연동: 외부 API를 가져와서 데이터를 처리하고 렌더링하는 방식(예: fetch 또는 axios 사용)을 익혀보세요.
+	스타일링: CSS, SCSS 또는 styled-components와 같은 스타일링 방식도 배워보면 좋아요.
+
+
+
+
+1. 간단한 카운터 앱
+목표: 버튼 클릭 시 카운트를 증가/감소하는 기능을 구현합니다.
+
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={() => setCount(count + 1)}>Increase</button>
+      <button onClick={() => setCount(count - 1)}>Decrease</button>
+    </div>
+  );
+}
+
+export default Counter;
+
+
+2. TODO 리스트
+목표: 사용자로부터 입력을 받아 할 일을 추가하고, 삭제할 수 있는 앱을 만듭니다.
+
+
+import React, { useState } from 'react';
+
+function TodoList() {
+  const [todos, setTodos] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+
+  const addTodo = () => {
+    setTodos([...todos, inputValue]);
+    setInputValue('');
+  };
+
+  const removeTodo = (index) => {
+    const newTodos = todos.filter((_, i) => i !== index);
+    setTodos(newTodos);
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      <button onClick={addTodo}>Add Todo</button>
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>
+            {todo} <button onClick={() => removeTodo(index)}>Remove</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default TodoList;
+
+
+3. API 데이터 가져오기
+목표: 외부 API에서 데이터를 가져와서 화면에 표시합니다. (예: JSONPlaceholder 사용)
+
+import React, { useEffect, useState } from 'react';
+
+function UsersList() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then((response) => response.json())
+      .then((data) => setUsers(data));
+  }, []);
+
+  return (
+    <div>
+      <h1>Users List</h1>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default UsersList;
+
+
+4. 간단한 날씨 앱
+목표: 사용자가 도시 이름을 입력하면 해당 도시의 날씨 정보를 표시합니다.
+
+import React, { useState } from 'react';
+
+function WeatherApp() {
+  const [city, setCity] = useState('');
+  const [weather, setWeather] = useState(null);
+
+  const fetchWeather = () => {
+    const apiKey = 'YOUR_API_KEY'; // OpenWeatherMap API 키 입력
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+      .then((response) => response.json())
+      .then((data) => setWeather(data));
+  };
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
+        placeholder="Enter city"
+      />
+      <button onClick={fetchWeather}>Get Weather</button>
+      {weather && (
+        <div>
+          <h2>{weather.name}</h2>
+          <p>Temperature: {weather.main.temp} °C</p>
+          <p>Weather: {weather.weather[0].description}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default WeatherApp;
+
+
+5. 리액트 라우터 사용하기
+목표: React Router를 사용하여 여러 페이지 간의 내비게이션을 구현합니다.
+
+import React from 'react';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import Home from './Home';
+import About from './About';
+
+function App() {
+  return (
+    <Router>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+      </nav>
+      <Switch>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
+  );
+}
+
+export default App;
+
