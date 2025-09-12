@@ -8,7 +8,7 @@ function App() {
       <h1>Start React 200!</h1>
       <p>CSS 적용하기</p>
       <LifecycleEx
-        prop_value = 'FromApp.js'
+        prop_value = 'FromAppaa.js'
       />
     </div>
   );

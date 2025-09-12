@@ -3,6 +3,25 @@
 ============리액트 스터디=============
 
 
+웹 성능 최적화: Lighthouse, Web Vitals 등을 활용해 성능 최적화 방법
+
+AI API 활용: OpenAI, Google Cloud AI, AWS AI 서비스 등 AI API를 활용하는 방법
+
+머신러닝 기본 이해: TensorFlow.js, Brain.js와 같은 JavaScript 기반 머신러닝 라이브러리를 학습
+
+챗봇 개발: Dialogflow, Microsoft Bot Framework 등을 활용해 AI 기반 챗봇을 개발하는 방법
+
+CI/CD: GitHub Actions, Jenkins 등을 활용해 지속적 통합/배포 파이프라인을 구축하는 방법
+
+WebAssembly: 고성능 웹 애플리케이션 개발을 위해 WebAssembly를 학습하세요.
+
+Edge Computing: 클라이언트 측에서 AI 모델을 실행하는 Edge AI 기술을 익히세요.
+
+Web3: 블록체인과 분산형 애플리케이션(DApps)에 대한 이해를 높이세요
+
+
+
+
 
 ------설치 셋팅-------
 
@@ -389,6 +408,12 @@ json
 **package.json**은 프로젝트의 의존성과 메타데이터를 관리하는 파일.
 **package-lock.json**은 의존성 트리의 정확한 버전 정보를 잠그고, 동일한 환경에서 패키지가 설치되도록 보장.
 
+- package.json과 package-lock.json을 Git에 커밋해야 할까?
+    package.json ✅ 반드시 포함해야 함
+    package-lock.json ✅ 팀 프로젝트라면 포함하는 것이 좋음
+    (같은 패키지 버전을 유지하기 위해)
+
+
 
 
 ---서비스 워커(Service Worker)란?---
@@ -396,6 +421,15 @@ json
 
 
 manifest.json 파일은 웹 애플리케이션을 **Progressive Web App (PWA)**로 만들기 위한 핵심 구성 요소 중 하나입니다. 이 파일은 브라우저와 장치가 웹 애플리케이션을 어떻게 처리할지에 대한 메타데이터를 제공하는 구성 파일입니다. 주로 PWA에서 웹 애플리케이션을 네이티브 앱처럼 설치하거나 홈 화면에 추가할 때 사용됩니다.
+ 
+manifest.json 파일은 웹 애플리케이션(특히 PWA, Progressive Web App)에서 메타 정보를 정의하는 JSON 형식의 설정 파일입니다.
+이 파일을 사용하면 웹앱이 모바일 앱처럼 설치 가능하고, 홈 화면에 아이콘 추가, 풀스크린 실행, 테마 색상 설정 등의 기능을 수행할 수 있습니다.
+
+웹앱의 기본 정보 제공 → 앱 이름, 설명, 아이콘 등
+홈 화면 추가 기능 → 웹앱을 설치하고 홈 화면에서 실행 가능
+UI 스타일 지정 → 배경색, 테마 색상, 화면 표시 모드 등 설정
+PWA 지원 → 웹앱을 네이티브 앱처럼 사용 가능
+
 
 
 
@@ -404,19 +438,27 @@ manifest.json 파일은 웹 애플리케이션을 **Progressive Web App (PWA)**�
 public 폴더 > html, ico, 이미지, mainfest.json
  - index.html  >> ID
  
-src 폴더 > index.js 1. react import
-                       2. react-dom import
-                       3. App import : 태그로 사용 >>> render App
-                       4. serviceWorker import
-                       5. index.css import
+src 폴더 > index.js파일  1. react import
+                              2. react-dom import
+                              3. index.css import
+                              4. App import : 태그로 사용 >>> render App.js
+                              5. 각 컴포넌트 import
+                              6. ReactDOM.render(<App />, document.getElementById("root"));  >>> ReactDOM.render()를 사용하여 <App /> 컴포넌트를 실제 브라우저의 #root 요소 안에 삽입하는 역할을 함.
+                                react 18 이후 변경
+                                   const root = ReactDOM.createRoot(document.getElementById("root"));
+				   root.render(<App />);
+                              7. serviceWorker.js는 Progressive Web App (PWA) 기능을 구현할 때 사용되는 서비스 워커(Service Worker) 스크립트
+				   웹 애플리케이션 오프라인에서도 동작 가능하게 만들고, 백그라운드에서 푸시 알림, 캐싱, 네트워크 요청 가로채기 등의 기능을 수행
+        
 
-          > App.js 1. react import
-                     2. App.css import
-                     3. 각 필요한 컴포넌트 import
-                     4. fuction App 함수작성, 태그 적용, component 태그
-                     5. export App
+          > App.js 파일 1. react import
+                            2. App.css import
+                            3. 각 필요한 컴포넌트 import
+                            4. fuction App 함수작성, 태그 적용, component 태그
+                            5. export App
 
                      
+
 
 
 
@@ -425,7 +467,9 @@ src 폴더 > index.js 1. react import
 react에서 생명주기란 component의 생성, 변경, 소멸 과정을 뜻함.
 
 상태 관리: 클래스 컴포넌트를 사용할 때는 상태(state)를 관리하기 위해 this.state를 사용하고, 상태를 변경할 때는 this.setState() 메서드를 사용합니다.
+
 생명주기 메서드: 클래스 컴포넌트는 여러 생명주기 메서드를 사용할 수 있어 컴포넌트의 생성, 업데이트, 제거 시점을 제어할 수 있습니다.
+
 
 
 
@@ -456,8 +500,76 @@ this.state = {};
 생성자가 호출된 후, 렌더 메서드가 호출됩니다. 이때 컴포넌트의 UI가 결정됩니다.
 
 
-
 추가적으로 컴포넌트의 생명주기 메서드(예: componentDidMount, componentDidUpdate, componentWillUnmount)를 구현하여 더욱 다양한 생명주기 이벤트를 다룰 수 있습니다.
+
+
+
+
+
+
+----------Next.js-------------
+
+React 기반의 SPA처럼 보일 수 있지만, 실제로는 더 강력한 기능을 갖춘 하이브리드 프레임워크
+Next.js는 SPA(싱글 페이지 애플리케이션) 방식도 지원하지만, SSR(서버 사이드 렌더링)과 SSG(정적 사이트 생성)도 함께 제공하는 확장된 형태
+
+
+
+React SPA는 기본적으로 CSR(클라이언트 사이드 렌더링) 만 가능하지만,
+Next.js는 다음과 같은 다양한 렌더링 방식을 제공해.
+
+✅ 1. CSR (Client-Side Rendering) → 기본적인 React 방식
+✅ 2. SSR (Server-Side Rendering) → SEO & 초기 로딩 속도 개선
+✅ 3. SSG (Static Site Generation) → 빠른 페이지 로딩 & 검색 최적화
+✅ 4. ISR (Incremental Static Regeneration) → 일부 정적 페이지만 주기적으로 업데이트
+
+💡 즉, Next.js를 사용하면 React의 CSR 방식도 사용할 수 있고, SEO가 필요한 페이지는 SSR/SSG로 최적화
+
+
+
+
+
+-----간단한 리액트 예제------
+
+
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+
+const Home = () => (
+  <div className="p-10 text-center">
+    <h1 className="text-3xl font-bold">홈페이지</h1>
+    <p className="text-lg text-gray-600">React로 만든 간단한 웹사이트</p>
+  </div>
+);
+
+const About = () => (
+  <div className="p-10 text-center">
+    <h1 className="text-3xl font-bold">소개 페이지</h1>
+    <p className="text-lg text-gray-600">이 웹사이트는 React와 Tailwind CSS로 만들어졌습니다.</p>
+  </div>
+);
+
+const Navbar = () => (
+  <nav className="bg-blue-600 p-4 text-white flex justify-center space-x-4">
+    <Link to="/" className="hover:underline">홈</Link>
+    <Link to="/about" className="hover:underline">소개</Link>
+  </nav>
+);
+
+const App = () => {
+  return (
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
+
+
 
 
 

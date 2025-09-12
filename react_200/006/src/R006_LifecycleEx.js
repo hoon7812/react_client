@@ -14,7 +14,7 @@ class R006_LifecycleEx extends Component {
   render() {
     console.log('3. render Call');
     return (
-      <h2>[ THIS IS CONSTRUCTOR FUCNTION ]</h2>
+      <h2>[ THIS IS CONSTRUCTOR FUCNTIOadsfasdfN ]</h2>
     )
   }
 }
