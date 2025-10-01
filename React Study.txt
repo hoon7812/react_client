@@ -81,6 +81,10 @@ Component 구조화: 컴포넌트를 나누고, props를 사용해 데이터를 
 
 
 
+
+
+
+
 1. 간단한 카운터 앱
 목표: 버튼 클릭 시 카운트를 증가/감소하는 기능을 구현합니다.
 
@@ -99,6 +103,10 @@ function Counter() {
 }
 
 export default Counter;
+
+
+
+
 
 
 2. TODO 리스트
@@ -143,6 +151,10 @@ function TodoList() {
 export default TodoList;
 
 
+
+
+
+
 3. API 데이터 가져오기
 목표: 외부 API에서 데이터를 가져와서 화면에 표시합니다. (예: JSONPlaceholder 사용)
 
@@ -170,6 +182,10 @@ function UsersList() {
 }
 
 export default UsersList;
+
+
+
+
 
 
 4. 간단한 날씨 앱
@@ -211,6 +227,10 @@ function WeatherApp() {
 export default WeatherApp;
 
 
+
+
+
+
 5. 리액트 라우터 사용하기
 목표: React Router를 사용하여 여러 페이지 간의 내비게이션을 구현합니다.
 
@@ -241,7 +261,12 @@ function App() {
 export default App;
 
 
+
+
 ----------------------------------------------------------------------------------------------------------------------
+
+
+
 
 
 1. 메서드 (Method)
@@ -258,6 +283,9 @@ dog.bark(); // 결과: Buddy says woof!
 이 예시에서 bark는 dog 객체의 메서드로, this를 통해 객체의 속성 name에 접근합니다.
 
 
+
+
+
 2. 인자 (Argument)
 정의: 함수를 호출할 때 전달하는 값을 인자라고 합니다. 함수의 입력으로 사용됩니다.
 
@@ -270,6 +298,9 @@ console.log(result); // 결과: 8
 이 예시에서 5와 3은 add 함수에 전달된 인자입니다.
 
 
+
+
+
 3. 인수 (Parameter)
 정의: 함수 정의에서 사용되는 변수로, 함수가 호출될 때 인자가 할당되는 부분입니다. 함수의 입력을 정의합니다.
 
@@ -280,6 +311,10 @@ function multiply(a, b) { // a와 b는 인수
 const product = multiply(4, 5); // 4와 5는 인자
 console.log(product); // 결과: 20
 여기서 a와 b는 multiply 함수의 인수입니다.
+
+
+
+
 
 
 4. 인스턴스 (Instance)
@@ -308,6 +343,7 @@ myCar.drive(); // 결과: Driving a Toyota Corolla
 인수: 함수 정의에서 사용되는 변수.
 인스턴스: 클래스에서 생성된 실제 객체.
 이 네 가지 개념은 JavaScript의 객체 지향 프로그래밍에서 중요한 역할을 하며, 함께 이해하면 프로그래밍을 보다 쉽게 할 수 있습니다.
+
 
 
 
@@ -568,6 +604,169 @@ const App = () => {
 };
 
 export default App;
+
+
+
+
+
+
+Tailwind CSS
+
+
+
+ 1. Tailwind CSS의 핵심 개념
+유틸리티 우선 (Utility-First)	
+.bg-blue-500, .p-4, .flex와 같이 **작은 기능(유틸리티)**을 가진 클래스들을 조합하여 스타일을 완성합니다. 별도의 CSS 파일을 만들 필요가 없습니다.
+
+접두사 규칙 (Prefix)	
+고정된 규칙에 따라 CSS 속성 이름이 짧은 접두사로 축약됩니다. (예: background-color → .bg-, padding → .p-) 이 접두사들은 Tailwind 내부에 이미 정의되어 있습니다.
+
+디자인 토큰 (Design Tokens)
+.bg-red-500처럼 클래스 이름에 폰트 크기, 색상, 간격 등의 **값(Value)**이 포함되어 있습니다.
+
+
+
+
+
+
+
+
+2. 필수 파일과 역할
+Tailwind 프로젝트를 구성하는 세 가지 핵심 파일의 역할입니다.
+
+1. tailwind.config.js (설계도)
+역할: Tailwind CSS가 생성할 유틸리티 클래스들의 **값(Value)**을 정의하는 설정 파일입니다.
+
+주요 설정: theme.extend.colors (새로운 색상 값 정의), content (사용된 클래스를 스캔할 파일 경로 지정).
+
+주의: 여기에 CSS 코드({ 속성: 값; })를 직접 작성하지 않습니다.
+
+tailwind.config.js 상단의 주석 (/** @type {import('tailwindcss').Config} */)은 코드가 아닌 주석으로, IDE의 자동 완성 기능을 켜주는 역할을 합니다.
+
+
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        'primary': '#0A55D7', // 💡 단 하나의 이름(primary) 정의
+      },
+    },
+  },
+};
+
+
+
+
+
+
+2. 글로벌 CSS 파일 (예: index.css)
+역할: Tailwind CSS가 실제 CSS 코드를 주입(Inject)할 위치를 지정하는 파일입니다.
+
+필수 지시어:
+
+@tailwind base: CSS 리셋 및 기본 HTML 태그 스타일 삽입.
+
+@tailwind components: @apply로 만든 커스텀 컴포넌트 스타일 삽입.
+
+@tailwind utilities: 가장 중요! .bg-red-500, .p-4 등 마크업에서 사용된 모든 유틸리티 클래스 코드를 삽입합니다.
+
+
+/* index.css */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+@tailwind base;
+/* ... */
+@tailwind utilities;
+
+/* 💡 순수한 CSS 코드는 여기에 작성 */
+html, body {
+  /* Tailwind가 제공하지 않는 CSS 속성을 직접 작성 */
+  scroll-behavior: smooth; 
+}
+
+
+
+
+
+
+
+3. 컴포넌트 파일 (예: Button.jsx / .tsx)
+역할: JSX 마크업의 className 속성에 Tailwind 유틸리티 클래스를 직접 나열하여 스타일을 적용합니다.
+
+🧱 3. 빌드 및 작동 순서
+클래스 작성: 개발자가 React 컴포넌트(Button.jsx)의 className에 Tailwind 클래스(bg-primary p-4)를 작성합니다.
+
+엔진 작동: 프로젝트 빌드 시 PostCSS 환경에서 Tailwind 엔진이 실행됩니다.
+
+규칙 확인: 엔진은 tailwind.config.js 파일을 참조하여 primary의 실제 Hex 값과 p-4의 간격 값을 확인합니다.
+
+코드 생성 및 주입: 엔진은 사용된 클래스만 골라 실제 CSS 코드를 생성하고, 이 코드를 글로벌 CSS 파일의 @tailwind utilities 지시어 자리에 **대체(삽입)**하여 최종 CSS 파일을 만듭니다.
+
+
+
+
+
+
+
+TypeScript
+
+1. TypeScript의 핵심 개념
+
+정적 타입 (Static Types)	
+코드 실행 전에 타입 오류를 미리 검사하여 예측 불가능한 런타임 오류를 줄여줍니다. JavaScript(동적 타입)와 달리, 변수나 함수에 : string, : number와 같은 타입을 명시해야 합니다.
+
+JavaScript의 확장 (Superset)	
+모든 유효한 JavaScript 코드는 유효한 TypeScript 코드입니다. 기존 JS 문법에 타입 시스템만 추가된 형태입니다.
+
+컴파일 과정	
+브라우저가 이해할 수 있도록 최종적으로는 **JavaScript 코드로 트랜스파일(Transpile)**되어 실행됩니다.
+
+확장자	
+React 컴포넌트에 TypeScript 문법(타입, 인터페이스)이 포함되면 파일 확장자는 .jsx 대신 **.tsx**를 사용해야 합니다.
+
+
+
+
+2. 리액트 개발에 필수적인 타입 문법
+TypeScript를 리액트에서 사용할 때 가장 중요한 두 가지 영역(Props와 State)에서의 타입 정의 방법입니다.
+
+1. 인터페이스 (Interface)를 이용한 구조 정의
+**interface**는 객체(Object)의 구조, 즉 속성 이름과 타입을 정의하는 데 사용됩니다. 리액트에서는 주로 Props와 복잡한 State의 모양을 정의할 때 필수적입니다.
+
+예시:
+
+TypeScript
+
+interface UserProfileProps {
+  name: string;        // 필수 문자열
+  age: number;         // 필수 숫자
+  email?: string;      // 선택적(Optional) 속성
+}
+2. 타입 주석 (Type Annotation)과 제네릭 (Generics)
+타입 주석: 콜론(:)을 사용하여 변수, 매개변수 등에 타입을 직접 명시합니다.
+
+TypeScript
+
+const userEmail: string = "test@example.com";
+함수 및 Props 적용: 컴포넌트 함수의 매개변수에 타입을 적용합니다.
+
+TypeScript
+
+const UserProfile = ({ name, age }: UserProfileProps) => { /* ... */ };
+useState와 제네릭: 상태 변수의 타입을 명시할 때 꺾쇠 괄호(< >) 안에 타입을 넣어줍니다. 특히 초기값이 null일 경우 타입을 명시해야 합니다.
+
+TypeScript
+
+// 상태는 UserData 객체이거나 null일 수 있음을 명시
+const [user, setUser] = useState<UserData | null>(null);
+✨ 3. Tailwind CSS와의 연결
+IDE 지원: tailwind.config.js 파일 상단에 추가되는 주석 /** @type {import('tailwindcss').Config} */은 실제 코드가 아닙니다. 이는 TypeScript의 타입을 활용하여 개발 도구(IDE)에 Tailwind 설정 객체의 구조를 알려주어 자동 완성(IntelliSense) 기능을 활성화하기 위한 목적입니다.
+
+TypeScript는 개발자가 실수할 여지를 줄여주고 코드의 예측 가능성을 높여주기 때문에, 특히 대규모 프론트엔드 프로젝트에서 높은 생산성과 안정성을 제공하는 핵심 기술로 자리 잡았습니다.
+
+
+
 
 
 
